@@ -11,6 +11,7 @@ import java.util.Set;
 @Transactional
 public class RoleServiseImpl implements RoleService {
     private RoleDao roleDao;
+
     @Autowired
     public RoleServiseImpl(RoleDao roleDao) {
         this.roleDao = roleDao;
