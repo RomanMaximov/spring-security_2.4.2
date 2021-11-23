@@ -8,7 +8,6 @@ import web.model.Role;
 import java.util.Set;
 
 @Service
-@Transactional
 public class RoleServiseImpl implements RoleService {
     private RoleDao roleDao;
 
@@ -18,6 +17,7 @@ public class RoleServiseImpl implements RoleService {
     }
 
     @Override
+    @Transactional
     public void saveRole(Set<Role> roles) {
         roleDao.saveRole(roles);
     }
