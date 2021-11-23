@@ -20,7 +20,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    //@GetMapping("/userpage")
     @GetMapping("/page")
     public String getPrincipal(@CurrentSecurityContext(expression = "authentication.principal")
                                Principal principal,
