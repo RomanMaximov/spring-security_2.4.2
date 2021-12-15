@@ -24,8 +24,7 @@ public class UserController {
     public String getPrincipal(@CurrentSecurityContext(expression = "authentication.principal")
                                Principal principal,
                                Model model) {
-        User tmp = userService.getUserByUsername(principal.getName());
-        model.addAttribute("showUser", tmp);
+        model.addAttribute("showUser", userService.getUserByUsername(principal.getName()));
         return "userpage";
     }
 }

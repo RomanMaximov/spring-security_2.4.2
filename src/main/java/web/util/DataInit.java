@@ -38,17 +38,14 @@ public class DataInit {
         user2.setLogin("user");
         user2.setPassword("101");
 
-        String s1 = "ROLE_ADMIN";
-        String s2 = "ROLE_USER";
-        Role role1 = new Role(s1);
-        Role role2 = new Role(s2);
+        Role role1 = new Role("ROLE_USER");
+        Role role2 = new Role("ROLE_ADMIN");
         Set<Role> setStartRoles = new HashSet<>();
         setStartRoles.add(role1);
-        Set<Role> set2 = new HashSet<>();
         setStartRoles.add(role2);
-        set2.add(role2);
         roleService.saveRole(setStartRoles);
-        userService.addUser(user1, setStartRoles.stream().limit(1).collect(Collectors.toSet()));
-        userService.addUser(user2, set2);
+        userService.addUser(user1, setStartRoles);
+        setStartRoles = setStartRoles.stream().filter(r -> r.getName() == "ROLE_USER").collect(Collectors.toSet());
+        userService.addUser(user2, setStartRoles);
     }
 }
